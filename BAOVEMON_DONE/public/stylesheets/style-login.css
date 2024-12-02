@@ -1,0 +1,190 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap");
+.card-login-body {
+    position: relative;
+    margin: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+    background-color: #f0f1f7;
+    text-align: start;
+    font-family: Inter, sans-serif;
+    font-size: .813rem;
+    font-weight: 400;
+    color: #333335;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
+
+.logo {
+    width: 25%;
+    height: 65px;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+}
+
+.card-login {
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+
+    background-color: #ffffff;
+    font-size: .813rem;
+    color: #333335;
+    --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+    --tw-code: 0 0 #0000;
+    box-shadow: var(--tw-code, 0 0 #0000), var(--tw-code, 0 0 #0000), var(--tw-shadow);
+    padding: 3rem !important;
+    width: 500px;
+    /* Chiều rộng của form */
+    max-width: 90%;
+    /* Tối đa 90% chiều rộng màn hình */
+    margin: 0 auto;
+    /* Giữa màn hình */
+}
+
+.text-form-login {
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+.text-lg-2 {
+    opacity: .7;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-align: center;
+    --tw-text-opacity: 1;
+    color: rgb(140 144 151 / var(--tw-text-opacity));
+}
+
+.card-form {
+    padding: 10px;
+}
+
+.card-input {
+    display: grid;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+
+    font-size: .8rem !important;
+    font-weight: 600 !important;
+    color: #333335 !important;
+}
+
+.card-input>input {
+    color: #333335;
+    width: 100%;
+    padding: .5rem .85rem;
+    font-size: 13px;
+    font-weight: 400;
+    border-color: #e9edf6;
+    line-height: 1.6;
+    border-radius: .5rem !important;
+}
+
+
+input:focus {
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgba(233, 154, 102, 0.6) !important;
+    outline: none !important;
+    border-color: #ff7811 !important;
+}
+button.btn-login {
+    margin-bottom: .25rem;
+    margin-inline-start: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border-radius: .25rem;
+    border-width: 1px;
+    border-color: transparent;
+    padding: .5rem .75rem;
+    font-size: .875rem;
+    font-weight: 500;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+    background-color: #ff7811;
+    color: #fff;
+    margin-top: .5rem;
+    text-decoration: inherit;
+    width: 100%;
+}
+.error-input-username {
+    display: none;
+    text-align: right;
+    color: #d03535;
+    font-weight: 600;
+}
+.error-input-password {
+    display: none;
+    text-align: right;
+    color: #d03535;
+    font-weight: 600;
+}
+
+.card-modal {
+    position: absolute;
+    z-index: 999;
+    background-color: #cfcfcf;
+    color: white;
+    border-radius: 6px;
+    right: 0;
+    top: -0px; 
+    margin: 50px;
+    padding: 15px;
+    transition: top 3s ease 2s;
+   
+   
+}
+.success {
+    display: none;
+}
+.modal-error{
+    display: none;
+}
+.card-modal.show {
+    display: block; 
+ 
+    top: 0px; 
+}
+.c-flex {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+.c-gird {
+    display: grid;
+}
+p.modal-title {
+    font-weight: 600;
+    color: #2c2c2c;
+    text-align: right;
+}
+p.modal-content {
+    font-weight: 500;
+    color: #686868;
+    font-size: 12px;
+    text-align: right;
+}

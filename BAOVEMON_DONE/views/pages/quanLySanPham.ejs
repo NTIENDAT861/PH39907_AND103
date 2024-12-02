@@ -1,0 +1,710 @@
+<%- include('../layout/head.ejs') %>
+
+   <%- include('../layout/nav.ejs') %>
+      <nav class="flex mt-17" aria-label="Breadcrumb">
+         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <li class="inline-flex items-center">
+               <a href="#"
+                  class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                  <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                     viewBox="0 0 20 20">
+                     <path
+                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                  </svg>
+                  Trang Chủ
+               </a>
+            </li>
+            <li>
+               <div class="flex items-center">
+                  <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 9 4-4-4-4" />
+                  </svg>
+                  <a href="#"
+                     class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+                     <%= title %>
+                  </a>
+               </div>
+            </li>
+
+         </ol>
+      </nav>
+      <div class=" zzzzzzzzz-flex">
+         <!-- NỘI DUNG -->
+         <button type="button" data-modal-target="data-modal" onclick="AddProduct('add')" data-modal-toggle="data-modal"
+            class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2">
+
+            <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+               width="24" height="24" fill="none" viewBox="0 0 24 24">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 5v14m-8-7h2m0 0h2m-2 0v2m0-2v-2m12 1h-6m6 4h-6M4 19h16c.5523 0 1-.4477 1-1V6c0-.55228-.4477-1-1-1H4c-.55228 0-1 .44772-1 1v12c0 .5523.44772 1 1 1Z">
+               </path>
+            </svg>
+
+            Thêm sản phẩm
+         </button>
+         <!-- NỘI DUNG -->
+         <form class="max-w-md formsss">
+            <label for="default-search"
+               class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                  </svg>
+               </div>
+               <input type="search" id="search-data"
+                  class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Áo..." required />
+               <button disabled
+                  class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+            </div>
+         </form>
+      </div>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+               <tr>
+                  <th scope="col" class="p-4">
+                     <div class="flex items-center">
+                        ID
+                     </div>
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                     Tên sản phẩm
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                     Loại
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                     Ảnh
+                  </th>
+
+                  <th scope="col" class="px-6 py-3">
+                     Giá
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                     Mẫu kích thước
+                  </th>
+                  <th scope="col" class="p-4">
+                     Thao tác
+                  </th>
+               </tr>
+            </thead>
+            <tbody  id="table-body-data">
+             
+            </tbody>
+         </table>
+         <div class="flex justify-center">
+            <div class="pagination-data-ntd" id="pagination">
+             
+            </div>
+          </div>
+      </div>
+
+      <div id="data-modal" tabindex="-1" aria-hidden="true"
+         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+         <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+               <!-- Modal header -->
+               <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white" id="text-modal">
+                     Chỉnh sửa sản phẩm
+                  </h3>
+                  <button type="button" data-modal-hide="data-modal"  id="data-modal-close"
+                     class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                     </svg>
+                     <span class="sr-only">Đóng</span>
+                  </button>
+               </div>
+               <!-- Modal body -->
+               <div class="p-4 md:p-5">
+
+                  <img class="z-wh rounded-full" id="img-account"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTozO8IprYCqpH-YTgtvyvADfyH5D_pOf58w&s"
+                     alt="user photo">
+                  <input type="file" id="img_account" accept="image/*" onchange="previewImage(event)">
+
+                  <div>
+                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Tên sản phẩm</label>
+                     <input id="tenSP"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="" required />
+                  </div>
+                  <input type="hidden" id="_id" value="">
+
+
+                  <div>
+                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giá</label>
+                     <input id="gia"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="" required />
+                  </div>
+                  <div>
+                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ghi chú</label>
+                     <input id="des"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="" required />
+                  </div>
+                  <div>
+                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Loại</label>
+                     <select id="loai" name="loai"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+
+                        <% typeProduct.forEach(function(item) { %>
+                           <option value="<%= item._id %>">
+                              <%= item.name %>
+                           </option>
+
+                           <% }); %>
+                     </select>
+
+                  </div>
+                  <div class="btn-savez">
+                     <button type="button" id="btn-modal"
+                        class="btn-zzzzzz mt-2 px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+
+                        Lưu
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="data-modal-type" tabindex="-1" aria-hidden="true"
+         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+         <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+               <!-- Modal header -->
+               <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                     Kiểu mẫu
+                  </h3>
+                  <button type="button" data-modal-hide="data-modal-type" id="data-modal-type-close"
+                     class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                     </svg>
+                     <span class="sr-only">Đóng</span>
+                  </button>
+               </div>
+               <!-- Modal body -->
+               <div class="p-4 md:p-5">
+
+                  <input type="hidden" id="_id_view">
+                  <div id="body-item" class="max-h-[300px] overflow-y-auto"></div>
+
+
+                  <div class="card-btn-flex">
+                     <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Size</label>
+                        <input id="size"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                           placeholder="XL" required />
+                     </div>
+                     <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Màu sắc</label>
+                        <input id="color"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                           placeholder="Trắng" required />
+                     </div>
+                     <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Số lượng</label>
+                        <input id="quantity"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                           placeholder="10" required />
+                     </div>
+                  </div>
+
+
+                  <div class="btn-savez">
+                     <button type="button" onclick="AddVariants()" id="btn-modal-type"
+                        class="btn-zzzzzz mt-2 px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w100">
+
+
+                        Lưu
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- KẾT THÚC -->
+
+      <script>
+              
+         console.log(data);
+           const rowsPerPage = 5; 
+           let currentPage = 1;
+             renderTable(currentPage);
+           renderPagination(data.length, rowsPerPage, currentPage);
+                 function renderTable(page) {
+    const tableBody = document.getElementById('table-body-data');
+    tableBody.innerHTML = ''; // Xóa dữ liệu cũ trong tbody
+
+    const start = (page - 1) * rowsPerPage;
+    const end = page * rowsPerPage;
+    const pageData = data.slice(start, end);
+
+    pageData.forEach((item, index) => {
+      const tr = document.createElement('tr');
+      tr.classList.add('bg-white', 'border-b', 'dark:bg-gray-800', 'dark:border-gray-700', 'hover:bg-gray-50', 'dark:hover:bg-gray-600');
+    
+      let item_encode = encode_array_item(item);
+      let variants_encode = encode_array_item(item.variants);
+ 
+   
+
+  
+      tr.innerHTML = `
+  <td class="w-4 p-4">
+    <span class="text-gray-900 dark:text-white">
+      ${start + index + 1}
+    </span>
+  </td>
+  <th id="user-name-${item.idUser}" scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <span id="fullname-${item.idUser}">
+      ${item.productName}
+    </span>
+  </th>
+  <td class="px-6 py-4">
+    ${item.idProductType.name}
+  </td>
+  <td class="px-6 py-4">
+    <img class="w-10 h-10" src="${item.image}" alt="user photo">
+  </td>
+  <td class="px-6 py-4">
+    ${item.price}
+  </td>
+  <td class="px-6 py-4">
+    <button data-modal-target="data-modal-type" onclick="ViewType(${variants_encode}, '${item._id}')" data-modal-toggle="data-modal-type" type="button">
+      <img src="/images/code-review_10049034.png" class="toggleImgOpen">
+    </button>
+  </td>
+  <td class="px-6 py-4 btn-voucher-2">
+    <button data-modal-target="data-modal" onclick="EditProduct(${item_encode}, 'edit')" data-modal-toggle="data-modal" type="button">
+      <img src="/images/edit_738880.png" class="toggleImgOpen">
+    </button>
+    <button onclick="Delete('${item._id}')" type="button">
+      <img src="/images/delete_12319558.png" class="toggleImgOpen">
+    </button>
+  </td>
+`;
+
+tableBody.appendChild(tr);
+
+      tableBody.appendChild(tr);
+    });
+  }
+ 
+  function renderPagination(totalRows, rowsPerPage, currentPage) {
+
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = ''; 
+
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    // Tạo nút "Previous"
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Previous';
+    prevButton.disabled = currentPage === 1;
+    prevButton.classList.add('page-btn-act');
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable(currentPage);
+        renderPagination(totalRows, rowsPerPage, currentPage);
+      }
+    });
+    pagination.appendChild(prevButton);
+
+    // Tạo các nút trang
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement('button');
+      button.textContent = i;
+      button.classList.add('page-btn');
+      if (i === currentPage) {
+        button.classList.add('active');
+      }
+      button.addEventListener('click', () => {
+        currentPage = i;
+        renderTable(currentPage);
+        renderPagination(totalRows, rowsPerPage, currentPage);
+      });
+      pagination.appendChild(button);
+    }
+
+    // Tạo nút "Next"
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.classList.add('page-btn-act');
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTable(currentPage);
+        renderPagination(totalRows, rowsPerPage, currentPage);
+      }
+    });
+    pagination.appendChild(nextButton);
+  }
+
+         document.getElementById('search-data').addEventListener('input', function () {
+            // Lấy giá trị tìm kiếm
+            const searchValue = this.value.toLowerCase();
+
+            // Lấy danh sách các hàng trong bảng
+            const table = document.getElementById('product-table');
+            const rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+               // Lấy nội dung của cột "Tên sản phẩm"
+               const productName = row.cells[1].textContent.toLowerCase();
+
+               // Kiểm tra nếu tên sản phẩm khớp với giá trị tìm kiếm
+               if (productName.includes(searchValue)) {
+                  row.style.display = ''; // Hiển thị hàng
+               } else {
+                  row.style.display = 'none'; // Ẩn hàng
+               }
+            });
+         });
+         const id_view = document.getElementById('_id_view');
+         var image_product = document.getElementById('img-account');
+         var name_product = document.getElementById('tenSP');
+         var price_product = document.getElementById('gia');
+         var des_product = document.getElementById('des');
+         var type_product = document.getElementById('loai');
+         var id = document.getElementById('_id');
+         var btn_modal = document.getElementById('btn-modal');
+         var text_modal = document.getElementById('text-modal');
+
+         function AddProduct(act) {
+
+            if (act == "add") {
+               image_product.src = "https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE=";
+               name_product.value = "";
+               price_product.value = "";
+               des_product.value = "";
+
+
+
+               text_modal.textContent = "Thêm sản phẩm";
+               btn_modal.addEventListener("click", async () => {
+
+
+                  var productName = name_product.value;
+                  var description = des_product.value;
+                  var idProductType = type_product.value;
+                  var price = price_product.value;
+                  var image = image_product.src;
+                  const data = {
+
+                     productName,
+                     description,
+                     idProductType,
+                     price,
+                     image,
+                     __v: 0
+                  }
+
+                  if (!productName || !idProductType || !price || !image) {
+                     Swal.fire({
+                        title: "Thông báo",
+                        text: "Điền đủ thông tin !",
+                        icon: "error"
+                     })
+                     return
+                  }
+
+                  var api = "/products/add-product";
+                  const response = await fetch(api, {
+                     method: "POST",
+                     headers: {
+                        "Content-Type": "application/json"
+                     },
+                     body: JSON.stringify(data)
+                  });
+                  const data_result = await response.json();
+                  if (data_result.status == 200) {
+                     Swal.fire({
+                        title: "Thông báo",
+                        text: "Thêm thành công !",
+                        icon: "success"
+                     }).then(() => {
+                        setTimeout(() => {
+                           location.reload();
+                        }, 1000);
+                     });
+                  }
+                  else {
+                     Swal.fire({
+                        title: "Thông báo",
+                        text: "Thêm không thành công !",
+                        icon: "error"
+                     })
+                  }
+
+               });
+
+
+            }
+
+         }
+         function EditProduct(data, act) {
+            const dataModal = new Modal(document.getElementById('data-modal'));
+            const close = document.getElementById('data-modal-close');
+            dataModal.show();
+
+
+            close.addEventListener("click", ()=> {
+               dataModal.hide();
+            })
+            if (act === 'edit') {
+               btn_modal.onclick = function () {
+                  EditSubmit();
+               };
+            }
+
+            id.value = data._id
+            image_product.src = data.image;
+            name_product.value = data.productName;
+            price_product.value = data.price;
+            des_product.value = data.description;
+            type_product.value = data.idProductType;
+
+
+
+
+         }
+
+         async function Delete(_id) {
+            const result = await Swal.fire({
+               title: "Thông báo",
+               text: "Bạn có chắc muốn xóa?",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonText: "Xóa",
+               cancelButtonText: "Hủy",
+               reverseButtons: true
+            });
+
+            if (result.isConfirmed) {
+               const response = await fetch("/products/delete", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ _id })
+               });
+
+               const data_result = await response.json();
+
+               Swal.fire({
+                  title: "Thông báo",
+                  text: data_result.status === 200 ? "Xóa thành công!" : "Xóa không thành công!",
+                  icon: data_result.status === 200 ? "success" : "error"
+               }).then(() => {
+                  setTimeout(() => location.reload(), 1000);
+
+               });
+            }
+         }
+
+
+         async function EditSubmit() {
+            var _id = id.value;
+            var productName = name_product.value;
+            var description = des_product.value;
+            var idProductType = type_product.value;
+            var price = price_product.value;
+            var image = image_product.src;
+            const data = {
+               _id,
+               productName,
+               description,
+               idProductType,
+               price,
+               image,
+               __v: 0
+            }
+            var api = "/products/update";
+            const response = await fetch(api, {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json"
+               },
+               body: JSON.stringify(data)
+            });
+            const data_result = await response.json();
+            if (data_result.status == 200) {
+               Swal.fire({
+                  title: "Thông báo",
+                  text: "Chỉnh sửa sản phẩm thành công !",
+                  icon: "success"
+               }).then(() => {
+                  setTimeout(() => {
+                     location.reload();
+                  }, 1000);
+               });
+            }
+            else {
+               Swal.fire({
+                  title: "Thông báo",
+                  text: "Chỉnh sửa không thành công !",
+                  icon: "error"
+               })
+            }
+
+         }
+
+
+         function ViewType(variants, _id) {
+            const dataModal = new Modal(document.getElementById('data-modal-type'));
+            const close = document.getElementById('data-modal-type-close');
+            dataModal.show();
+
+
+            close.addEventListener("click", ()=> {
+               dataModal.hide();
+            })
+            const bodyItem = document.getElementById('body-item');
+
+            bodyItem.innerHTML = ''; // Xóa nội dung cũ (nếu có)
+            id_view.value = _id
+            // Duyệt qua các biến thể trong variants
+            variants.forEach((variant, i) => {
+               // Tạo phần tử HTML động
+               const variantHTML = `
+    <div class="card-btn-flex">
+                  <div>
+                  
+                     <input
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        value="${variant.size}" required readonly />
+                  </div>
+                  <div>
+                    
+                     <input 
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        value="${variant.color}" required readonly />
+                  </div>
+                  <div>
+                  
+                     <input
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        value="${variant.quantity}" required readonly />
+                  </div>
+                  <button class="btn-delete-type" onclick="removeVariant(${i})">Xóa</button>
+                 </div>  `;
+
+               // Thêm phần tử vào body-item
+               bodyItem.insertAdjacentHTML('beforeend', variantHTML);
+            });
+         }
+
+         // Hàm xóa một biến thể dựa trên chỉ số
+         async function removeVariant(index) {
+            const data_post = {
+               _id: id_view.value,
+               index
+            }
+            const result = await Swal.fire({
+               title: "Thông báo",
+               text: "Bạn có chắc muốn xóa?",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonText: "Xóa",
+               cancelButtonText: "Hủy",
+               reverseButtons: true
+            });
+
+
+            if (result.isConfirmed) {
+               const response = await fetch("/products/delete-variants", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data_post)
+               });
+
+               const data_result = await response.json();
+
+               Swal.fire({
+                  title: "Thông báo",
+                  text: data_result.status === 200 ? "Xóa thành công!" : "Xóa không thành công!",
+                  icon: data_result.status === 200 ? "success" : "error"
+               }).then(() => {
+                  setTimeout(() => location.reload(), 1000);
+
+               });
+            }
+
+         }
+
+
+         async function AddVariants() {
+            var size = document.getElementById('size').value;
+            var color = document.getElementById('color').value;
+            var quantity = document.getElementById('quantity').value;
+
+            if (!size || !color || !quantity) {
+               Swal.fire({
+                  title: "Thông báo",
+                  text: "Điền đủ thông tin !",
+                  icon: "error"
+               })
+               return
+            }
+            const dataZ = {
+               _id: id_view.value,
+               variant: {
+                  size,
+                  color,
+                  quantity
+               }
+            }
+
+            var api = "/products/add-variants";
+            const response = await fetch(api, {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json"
+               },
+               body: JSON.stringify(dataZ)
+            });
+            const data_result = await response.json();
+            if (data_result.status == 200) {
+               Swal.fire({
+                  title: "Thông báo",
+                  text: "Thêm thành công !",
+                  icon: "success"
+               }).then(() => {
+                  setTimeout(() => {
+                     location.reload();
+                  }, 1000);
+               });
+            }
+            else {
+               Swal.fire({
+                  title: "Thông báo",
+                  text: "Thêm không thành công !",
+                  icon: "error"
+               })
+            }
+
+
+         }
+      </script>
+      <!-- KẾT THÚC -->
+
+      <%- include('../layout/footer.ejs') %>

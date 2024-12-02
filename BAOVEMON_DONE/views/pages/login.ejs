@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<link href="https://cdn.jsdelivr.net/npm/dragula@3.7.3/dist/dragula.min.css" rel="stylesheet" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="favicon" rel="icon" type="image/png" sizes="16x16" href="images/logoMD08.png">
+    <title>Đăng nhập</title>
+    <link href="stylesheets/style-login.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="card-login-body">
+
+<div class="container">
+    <div class="card-login">
+        <form method="post"
+               >
+
+        <img src="images/logoMD08.png" class="logo">
+        <p class="text-form-login">Sign In</p>
+        <p class="text-lg-2">Welcome back MD08 !</p>
+
+        <div class="card-form">
+            <div class="card-input">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-input" id="username" placeholder="Enter username">
+                <p class="error-input-username">Please enter username !</p>
+            </div>
+            <div class="card-input">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-input" id="password"
+                       placeholder="Enter password">
+                <p class="error-input-password">Please enter username !</p>
+            </div>
+            <button type="submit" id="login" class="btn-login">Login</button>
+        </div>
+        </form>
+    </div>
+
+</div>
+<div class="card-modal success" id="modal">
+    <div class="c-flex">
+        <img src="images/icons8-success.gif">
+        <div class="c-gird">
+            <p class="modal-title"> Notification</p>
+            <p class="modal-content">Log in successfully</p>
+        </div>
+    </div>
+
+</div>
+<div class="card-modal modal-error" id="modal-error">
+    <div class="c-flex">
+        <img src="images/icons8-error.gif">
+        <div class="c-gird">
+            <p class="modal-title"> Notification</p>
+            <p class="modal-content" id="msgError">Login failed</p>
+        </div>
+    </div>
+
+</div>
+
+
+<script   src="javascripts/main.js"></script>
+<script type="module"   src="javascripts/js-login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>
